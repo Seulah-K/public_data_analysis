@@ -1,0 +1,34 @@
+install.packages("treemap")
+library(treemap)
+
+forest <- read.csv("forest_data.csv")
+str(forest)
+
+library(dplyr)
+forest <- forest %>%
+  select(시도명,휴양림면적,위도,경도)%>%
+  rename(city=시도명,area=휴양림면적,latitude=위도,longitude=경도)
+
+forest1 <- forest
+forest1<-forest1 %>% 
+  group_by(city)%>%
+  summarise(mean_area=mean(area))%>%
+  arrange(desc(mean_area))
+
+treemap(forest1,index="city",vSize="mean_area",title="Forest Area in Korean Cities")
+
+library(readxl)
+popluation <- read_excel("popluation.xlsx")
+
+forest2 <- forest2 %>% 
+  left_join(forest1,popluation, by="city")
+
+forest2 <- forest2 %>%
+  mutate(per_person=mean_area/population) %>%
+  arrange(desc(per_person))
+
+library(ggplot2)
+ggplot(data=forest2, aes(x=reorder(city,per_person),y=per_person))+
+  geom_col()+
+  coord_flip()+
+  ggtitle("Forest Area per Person in Cities of South Korea")
