@@ -54,7 +54,9 @@ ggplot(data=forest2, aes(x=reorder(city,per_person),y=per_person))+
   labs(title="Forest Area per Person in Korean Cities",x="Cities",y="Area per Person (㎡)")+
   theme(plot.title=element_text(size=10),
         axis.title.x=element_text(size=10),
-        axis.title.y=element_text(size=10))
+        axis.title.y=element_text(size=10),
+        axis.text.x=element_text(size=8),
+        axis.text.y=element_text(size=8))
 
 
 #data source:
