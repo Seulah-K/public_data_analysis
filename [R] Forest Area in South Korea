@@ -13,7 +13,7 @@ forest <- forest %>%
   rename(city=시도명,area=휴양림면적,latitude=위도,longitude=경도)
 
 forest1 <- forest
-forest1<-forest1 %>% 
+forest1 <- forest1 %>% 
   group_by(city)%>%
   summarise(mean_area=mean(area))%>%
   arrange(desc(mean_area))
@@ -23,7 +23,7 @@ treemap(forest1,index="city",vSize="mean_area",title="Forest Area in Korean Citi
 x_k <- function (x) {number_format (accuracy = 1,
                                   scale = 1/1000,
                                   suffix = "k",
-                                  big.mark = ",")(x) }
+                                  big.mark = ",")(x)}
                                   
 ggplot(data=forest1, aes(x=reorder(city,mean_area),y=mean_area))+
   geom_col()+
