@@ -1,12 +1,13 @@
 install.packages("treemap")
 install.packages("scales")
+install.packages("dplyr")
 library(treemap)
 library(scales)
+library(dplyr)
 
 forest <- read.csv("forest_data.csv")
 str(forest)
 
-library(dplyr)
 forest <- forest %>%
   select(시도명,휴양림면적,위도,경도)%>%
   rename(city=시도명,area=휴양림면적,latitude=위도,longitude=경도)
@@ -23,6 +24,7 @@ x_k <- function (x) {number_format (accuracy = 1,
                                   scale = 1/1000,
                                   suffix = "k",
                                   big.mark = ",")(x) }
+                                  
 ggplot(data=forest1, aes(x=reorder(city,mean_area),y=mean_area))+
   geom_col()+
   geom_bar(stat='identity')+
