@@ -1,1 +1,5 @@
+uk_he <- read.csv("figure-4.csv", skip=17, check.names=FALSE)
+str(uk_he)
 
+names(uk_he) <- tolower(names(uk_he))
+head(uk_he)
