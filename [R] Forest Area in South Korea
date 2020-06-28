@@ -59,6 +59,6 @@ ggplot(data=forest2, aes(x=reorder(city,per_person),y=per_person))+
         axis.text.y=element_text(size=8))
 
 
-#data source:
+#data source
 1. https://www.data.go.kr/data/15013111/standard.do
 2. http://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B040A3
