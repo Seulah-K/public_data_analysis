@@ -4,6 +4,8 @@ str(uk_he)
 names(uk_he) <- tolower(names(uk_he))
 head(uk_he)
 
+library(reshape2)
+melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.var="level of study")
 
 
 #data source
