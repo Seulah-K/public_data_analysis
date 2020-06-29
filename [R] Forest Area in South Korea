@@ -1,9 +1,11 @@
 install.packages("treemap")
 install.packages("scales")
 install.packages("dplyr")
+install.packages("ggplot2")
 library(treemap)
 library(scales)
 library(dplyr)
+library(ggplot2)
 
 forest <- read.csv("forest_data.csv")
 str(forest)
@@ -27,7 +29,6 @@ x_k <- function (x) {number_format (accuracy = 1,
                                   
 ggplot(data=forest1, aes(x=reorder(city,mean_area),y=mean_area))+
   geom_col()+
-  geom_bar(stat='identity')+
   coord_flip()+
   labs(title="Forest Area in Korean Cities",x="Cities",y="Average Area (㎡)")+
   theme(plot.title=element_text(size=10),
