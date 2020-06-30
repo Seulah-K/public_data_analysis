@@ -25,7 +25,7 @@ View(melt_uk_he)
 
 
 #dcast()
-dcast_uk_he <- dcast(melt_uk_he,category.marker+category~variable) #This command returns an error message along with distorted data frame result
+dcast_uk_he <- dcast(melt_uk_he,category.marker+category~variable) #This command returns an error message along with distorted data frame result (Aggregation function missing: defaulting to length)
 
 
 
