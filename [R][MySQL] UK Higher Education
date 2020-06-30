@@ -15,7 +15,7 @@ table(is.na(uk_he))
 
 
 library(reshape2)
-melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.var="level of study")
+melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.var="level of study") # 'id.vars=1:2' brings the same result.  
 
 
 #data source
