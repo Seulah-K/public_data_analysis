@@ -14,8 +14,19 @@ head(uk_he)
 table(is.na(uk_he))
 
 
+#melt()
 library(reshape2)
-melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.var="level of study") # 'id.vars=1:2' brings the same result.  
+melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.vars="level of study") # 'id.vars=1:2' brings the same result
+
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=c("level.of.study","country.of.he.provider")) #Added one more vector of measured variable
+
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7)
+View(melt_uk_he)
+
+
+#dcast()
+dcast_uk_he <- dcast(melt_uk_he,category.marker+category~variable) #This command returns an error message along with distorted data frame result
+
 
 
 #data source
