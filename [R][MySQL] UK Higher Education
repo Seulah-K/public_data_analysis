@@ -2,7 +2,7 @@
 As an incoming postgraduate student at the UK university,  I have often visited HESA, the Higher Education Statistics Agency, to attain useful information.
 HESA already offers excellent graphs from various angles in detail so that I don't need to visualize raw data. 
 However, I found the dataset which is appropriate to practice the reshape2 package.
-Below are my R and MySQL code.
+Below are my R along with MySQL code.
 
 -----
 
@@ -22,12 +22,19 @@ melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=c("level.of.study","country.o
 
 melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7)
 
-melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_variable', value.name = 'melt_value') #Renamed the default variable and value columns.
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_variable', value.name = 'melt_value') #Renamed the default variable and value columns
 View(melt_uk_he)
 
 
 #dcast()
-dcast_uk_he <- dcast(melt_uk_he,category.marker+category~variable) #This returns an error message along with distorted data frame result (Aggregation function missing)
+dcast_uk_he <- dcast(melt_uk_he,"category.marker"~melt_variable) #This returns an error message because there are duplicate data in the two columns
+
+dcast_uk_he <- dcast(melt_uk_he,category~melt_variable, fun.aggregate=sum) #We can get the insight by utilizing fun.aggregate function
+
+
+
+
+
 
 
 
