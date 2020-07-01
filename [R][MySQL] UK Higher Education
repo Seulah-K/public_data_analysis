@@ -21,6 +21,8 @@ melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.vars="
 melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=c("level.of.study","country.of.he.provider")) #Added one more vector of measured variable
 
 melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7)
+
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_variable', value.name = 'melt_value') #Renamed the default variable and value columns.
 View(melt_uk_he)
 
 
