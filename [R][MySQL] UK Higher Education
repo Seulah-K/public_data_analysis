@@ -14,7 +14,7 @@ head(uk_he)
 table(is.na(uk_he))
 
 
-#melt()
+#melt
 library(reshape2)
 melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.vars="level of study") # 'id.vars=1:2' brings the same result
 
@@ -26,7 +26,7 @@ melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_va
 View(melt_uk_he)
 
 
-#dcast()
+#dcast
 dcast_uk_he <- dcast(melt_uk_he,"category.marker"~melt_variable) #This returns an error message because there are duplicate data in the two columns
 
 
@@ -46,6 +46,11 @@ acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) #The two commands a
 View(acast_uk_he)
 
 
+#sqldf
+install.packages("sqldf")
+library(sqldf)
+sqldf("select * from melt_uk_he")
+sqldf("select * from melt_uk_he limit 6") 
 
 
 #data source
