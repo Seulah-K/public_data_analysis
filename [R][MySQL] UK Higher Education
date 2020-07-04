@@ -1,7 +1,7 @@
 #Comment
 As an incoming postgraduate student at the UK university,  I have often visited HESA, the Higher Education Statistics Agency, to attain useful information.
 HESA already offers excellent graphs from various angles in detail so that I don't need to visualize raw data. 
-However, I found the dataset which is appropriate to practice the reshape2 package.
+However, I found the dataset which is appropriate to practice the reshape2 and sqldf package.
 Below are my R along with MySQL code.
 
 -----
