@@ -36,13 +36,13 @@ melt_uk_he <- melt_uk_he[!(melt_uk_he$category=="Total"|melt_uk_he$category=="To
 View(melt_uk_he)
 
 dcast_uk_he <- dcast(melt_uk_he,category~melt_variable, fun.aggregate=sum)
-dcast_uk_he <- dcast(melt_uk_he,category~melt_variable, sum) #The two commands are the same.
+dcast_uk_he <- dcast(melt_uk_he,category~melt_variable, sum) #The two commands are the same
 View(dcast_uk_he)
 
 
 #acast
 acast_uk_he <- acast(melt_uk_he,category~melt_variable, fun.aggregate=sum)
-acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) #The two commands are the same like dcast.
+acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) #The two commands are the same like dcast
 View(acast_uk_he)
 
 
