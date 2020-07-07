@@ -64,7 +64,7 @@ library(sqldf)
 sqldf("select * from melt_uk_he")
 sqldf("select * from melt_uk_he limit 6") 
 sqldf("select * from melt_uk_he where category like'20%'") #this is the same as 'subset(melt_uk_he, grepl("^20",melt_uk_he$category))' in R
-sqldf("select * from melt_uk_he where category in('White','Black')") #this is ths same as 'subset(melt_uk_he,melt_uk_he$category %in% c('White','Black'))' or subset(melt_uk_he, grepl("White|Black",melt_uk_he$category)) in R
+sqldf("select * from melt_uk_he where category in('White','Black')") #this is ths same as 'subset(melt_uk_he,melt_uk_he$category %in% c('White','Black'))' or 'subset(melt_uk_he, grepl("White|Black",melt_uk_he$category))' in R
 sqldf("select * from melt_uk_he order by melt_value desc")
 sqldf("select * from melt_uk_he order by melt_value")
 
