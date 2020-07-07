@@ -1,7 +1,7 @@
 #Comment
 As an incoming postgraduate student at the UK university,  I have often visited HESA, the Higher Education Statistics Agency, to attain useful information.
 HESA already offers excellent graphs from various angles in detail so that I don't need to visualize raw data. 
-However, I found the dataset which is appropriate to practice the reshape2 along with sqldf package.
+Instead, I found the dataset which is appropriate to practice the reshape2 along with sqldf package.
 Below are my R and MySQL code.
 
 -----
@@ -65,7 +65,8 @@ sqldf("select * from melt_uk_he")
 sqldf("select * from melt_uk_he limit 6") 
 sqldf("select * from melt_uk_he where category like'20%'") #this is the same as 'subset(melt_uk_he, grepl("^20",melt_uk_he$category))' in R
 sqldf("select * from melt_uk_he where category in('White','Black')") #this is ths same as 'subset(melt_uk_he,melt_uk_he$category %in% c('White','Black'))' in R
-
+sqldf("select * from melt_uk_he order by melt_value desc")
+sqldf("select * from melt_uk_he order by melt_value")
 
 
 
