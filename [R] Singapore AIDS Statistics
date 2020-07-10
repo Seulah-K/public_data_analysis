@@ -1,5 +1,12 @@
 
 
+-----
+
+ethnic_groups <- read.csv("ethnic_groups.csv")
+gender <- read.csv("gender.csv")
+mode_of_transmission <- read.csv("mode_of_transmission.csv")
+notification_rate <- read.csv("hiv_notification_rate.csv")
+
 
 
 #data source
