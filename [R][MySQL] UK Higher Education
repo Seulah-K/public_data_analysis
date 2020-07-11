@@ -1,4 +1,4 @@
-#Comment
+# Comment
 As an incoming postgraduate student at the UK university,  I have often visited HESA, the Higher Education Statistics Agency, to attain useful information.
 HESA already offers excellent graphs from various angles in detail so that I don't need to visualize raw data. 
 Instead, I found the dataset which is appropriate to practice the reshape2 along with sqldf package.
@@ -6,7 +6,7 @@ Below are my R and MySQL code.
 
 -----
 
-uk_he <- read.csv("figure-4.csv", skip=17)  # Add 'check.names=FALSE' if you want to remove the period
+uk_he <- read.csv("figure-4.csv", skip=17)  # add 'check.names=FALSE' if you want to remove the period
 str(uk_he)
 
 names(uk_he) <- tolower(names(uk_he))
@@ -14,23 +14,23 @@ head(uk_he)
 table(is.na(uk_he))
 
 
-#melt
+# melt
 library(reshape2)
 melt_uk_he <- melt(uk_he,id.vars=c("category marker","category"), measure.vars="level of study") # 'id.vars=1:2' brings the same result
 
-melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=c("level.of.study","country.of.he.provider")) #Added one more vector of measured variable
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=c("level.of.study","country.of.he.provider")) # added one more vector of measured variable
 
 melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7)
 
-melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_variable', value.name = 'melt_value') #Renamed the default variable and value columns
+melt_uk_he <- melt(uk_he,id.vars=1:2, measure.vars=4:7, variable.name = 'melt_variable', value.name = 'melt_value') # renamed the default variable and value columns
 View(melt_uk_he)
 
 
-#dcast
-dcast_uk_he <- dcast(melt_uk_he,"category.marker"~melt_variable) #This returns an error message because there are duplicate data in the two columns
+# dcast
+dcast_uk_he <- dcast(melt_uk_he,"category.marker"~melt_variable) # this returns an error message because there are duplicate data in the two columns
 
 
-#In this case, We can get the insight by utilizing fun.aggregate function
+# in this case, we can get the insight by utilizing fun.aggregate function
 melt_uk_he <- melt(uk_he,id.vars="category", measure.vars="number", variable.name = 'melt_variable', value.name = 'melt_value')
 melt_uk_he <- melt_uk_he[!(melt_uk_he$category=="Total"|melt_uk_he$category=="Total UK domiciled students"),]  #Removed the total sum columns
 View(melt_uk_he)
@@ -50,7 +50,7 @@ View(dcast_uk_he)
 
 #acast
 acast_uk_he <- acast(melt_uk_he,category~melt_variable, fun.aggregate=sum)
-acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) #The two commands are the same like dcast
+acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) # the two commands are the same like dcast
 View(acast_uk_he)
 
 acast_uk_he <- acast(melt_uk_he,category.marker+category~melt_variable, fun.aggregate=sum)
@@ -58,7 +58,7 @@ View(acast_uk_he)
 
 
 
-#sqldf
+# sqldf
 install.packages("sqldf")
 library(sqldf)
 sqldf("select * from melt_uk_he")
@@ -70,5 +70,5 @@ sqldf("select * from melt_uk_he order by melt_value")
 
 
 
-#data source
+# data source
 https://www.hesa.ac.uk/data-and-analysis/students/whos-in-he
