@@ -7,6 +7,16 @@ gender <- read.csv("gender.csv")
 mode_of_transmission <- read.csv("mode_of_transmission.csv")
 notification_rate <- read.csv("hiv_notification_rate.csv")
 
+#I made For Loop code to reduce time to create each dataframe and 
+ assigned the name of dataframe for second column name of each list element, 
+ implying the main subject of dataset.
+ 
+for(i in 1:4){
+  assign(names(data_list[[i]])[2],data_list[[i]])
+}
+
+
+
 
 
 #data source
