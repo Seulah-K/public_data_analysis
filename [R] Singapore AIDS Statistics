@@ -7,9 +7,9 @@ gender <- read.csv("gender.csv")
 mode_of_transmission <- read.csv("mode_of_transmission.csv")
 notification_rate <- read.csv("hiv_notification_rate.csv")
 
-# I made For Loop code to reduce time to create each dataframe and 
- assigned the name of dataframe for second column name of each list element, 
- implying the main subject of dataset
+# I made a For Loop code to reduce time to create each dataframe and 
+  assigned the name of data frame for second column name of each list element, 
+  implying the main subject of dataset
 
 files <- list.files(pattern="*.csv")
 data_list <- lapply(files,read.csv)
