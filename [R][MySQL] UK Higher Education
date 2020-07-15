@@ -13,6 +13,11 @@ names(uk_he) <- tolower(names(uk_he))
 head(uk_he)
 table(is.na(uk_he))
 
+install.packages("formattable")
+library(formattable)
+uk_he$number <- comma(uk_he$number,format='d') # add comma to seperate groups of thousands in the number variable.
+View(uk_he)
+
 
 # melt
 library(reshape2)
