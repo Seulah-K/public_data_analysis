@@ -22,6 +22,12 @@ for(i in 1:4){
 # but I used the former way and proceeded to transforming data
 
 
+library(reshape2)
+gender <- dcast(gender,year~gender)
+gender$gender_sum <- gender$female+gender$male
+View(gender)
+
+
 
 #data source
 https://data.gov.sg/dataset/hiv-notification-rate-per-million-population
