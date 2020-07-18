@@ -53,7 +53,7 @@ dcast_uk_he <- dcast(melt_uk_he,category.marker+category~melt_variable, sum)
 View(dcast_uk_he)
 
 
-#acast
+# acast
 acast_uk_he <- acast(melt_uk_he,category~melt_variable, fun.aggregate=sum)
 acast_uk_he <- acast(melt_uk_he,category~melt_variable, sum) # the two commands are the same like dcast
 View(acast_uk_he)
@@ -61,6 +61,16 @@ View(acast_uk_he)
 acast_uk_he <- acast(melt_uk_he,category.marker+category~melt_variable, fun.aggregate=sum)
 View(acast_uk_he)
 
+
+# good examples about 'Aggregation function missing: defaulting to length' error
+library(plyr)
+names(airquality) <- tolower(names(airquality))
+aqm <- melt(airquality, id=c("month", "day"), na.rm=TRUE)
+acast2 <-acast(aqm, variable ~ day)  # this returns error message because acast function can't adentify that each day is actually different 
+acast2 <-acast(aqm, variable ~ day, mean)  # but this works
+
+dcast2<-dcast(aqm, variable ~ day)  # this is the same as acast example
+dcast2<-dcast(aqm, variable ~ day,sum) 
 
 
 # sqldf
