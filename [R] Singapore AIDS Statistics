@@ -23,9 +23,13 @@ for(i in 1:4){
 
 
 library(reshape2)
-gender <- dcast(gender,year~gender)
-gender$gender_sum <- gender$female+gender$male
-View(gender)
+library(dplyr)
+gender <- gender %>% 
+  arrange(gender) %>%
+  filter(year %% 2 == 1)
+
+ggplot(gender, aes(x=year, y=no_of_cases, fill=gender))+
+              geom_bar(stat="identity")
 
 
 
